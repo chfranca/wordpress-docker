@@ -17,10 +17,10 @@ if [ "$(ls -A /src/themes)" ]; then
     mv /src/themes/* /var/www/html/wp-content/themes
 fi
 
-# if [ "$(ls -A /src/plugins)" ]; then
-#     echo "adding custom plugins to wordpress"
-#     mv /src/plugins /var/www/wp-content/plugins
-# fi
+if [ "$(ls -A /src/plugins)" ]; then
+    echo "adding custom plugins to wordpress"
+    mv /src/plugins /var/www/wp-content/plugins
+fi
 
 echo "rename wp-config"
 mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
@@ -39,5 +39,5 @@ curl https://api.wordpress.org/secret-key/1.1/salt/ >> /src/secrets.txt
 
 sed -i '53 r /src/secrets.txt' /var/www/html/wp-config.php
 
-# echo "change user owner to www:data"
-# chown -R www-data:www-data /var/www/html
+echo "change user owner to www:data"
+chown -R www-data:www-data /var/www/html

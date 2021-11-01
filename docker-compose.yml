@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: _wordpress.dockerfile
-    container_name: ecoblog-wordpress
-    image: chfranca/ecoblog-wordpress
+    container_name: wordpress
+    image: chfranca/wordpress
     restart: always
     ports:
       - "80:80"
@@ -17,8 +17,8 @@ services:
     build:
       context: .
       dockerfile: _mariadb.dockerfile
-    container_name: ecoblog-mariadb
-    image: chfranca/ecoblog-mariadb
+    container_name: mariadb
+    image: chfranca/mariadb
     restart: always
     ports:
       - '3306:3306'

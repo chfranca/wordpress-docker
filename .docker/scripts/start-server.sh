@@ -7,11 +7,6 @@ fi
 
 sh /src/scripts/update-db-config.sh
 
-# echo  >> /var/www/html/wp-config.php
-# echo "define('WP_HOME','$WP_HOME');" >> /var/www/html/wp-config.php
-# echo "define('WP_SITEURL','$WP_SITEURL');" >> /var/www/html/wp-config.php
-# echo  >> /var/www/html/wp-config.php
-
 sed -i "s/define( 'WP_DEBUG', false )/define( 'WP_DEBUG', $WP_DEBUG )/" /var/www/html/wp-config.php
 
 echo "starting apache..."

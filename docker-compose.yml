@@ -13,18 +13,6 @@ services:
       - './wordpress:/var/www/html'
     env_file: .env
 
-  # nginx:
-  #   build:
-  #     context: .
-  #     dockerfile: _nginx.dockerfile
-  #   container_name: ecoblog-nginx
-  #   image: chfranca/ecoblog-nginx
-  #   restart: always
-  #   ports:
-  #     - '80:80'
-  #   depends_on:
-  #     - "wordpress"
-
   mariadb:
     build:
       context: .

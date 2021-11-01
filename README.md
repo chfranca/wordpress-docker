@@ -1,1 +1,1 @@
-# Ecoblog
+# Wordpress template for devs

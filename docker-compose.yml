@@ -1,0 +1,47 @@
+version: '3.9'
+services:
+  wordpress:
+    build:
+      context: .
+      dockerfile: _wordpress.dockerfile
+    container_name: ecoblog-wordpress
+    image: chfranca/ecoblog-wordpress
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - './wordpress:/var/www/html'
+    env_file: .env
+
+  # nginx:
+  #   build:
+  #     context: .
+  #     dockerfile: _nginx.dockerfile
+  #   container_name: ecoblog-nginx
+  #   image: chfranca/ecoblog-nginx
+  #   restart: always
+  #   ports:
+  #     - '80:80'
+  #   depends_on:
+  #     - "wordpress"
+
+  mariadb:
+    build:
+      context: .
+      dockerfile: _mariadb.dockerfile
+    container_name: ecoblog-mariadb
+    image: chfranca/ecoblog-mariadb
+    restart: always
+    ports:
+      - '3306:3306'
+    volumes:
+      - 'mariadb_data:/var/lib/mysql'
+    environment:
+      MARIADB_ROOT_PASSWORD: "${MARIADB_ROOT_PASSWORD}"
+      MARIADB_DATABASE: "${WP_DBNAME}"
+      MARIADB_USER: "${WP_DBUSER}"
+      MARIADB_PASSWORD: "${WP_DBPASS}"
+
+volumes:
+  mariadb_data:
+    driver: local

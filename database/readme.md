@@ -1,0 +1,1 @@
+include here a .sql file for restore a installation of wordpress

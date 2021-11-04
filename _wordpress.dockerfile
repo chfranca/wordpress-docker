@@ -7,12 +7,13 @@ COPY wordpress /var/www
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
+    libzip-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD .docker/php/php.ini /usr/local/etc/php/conf.d/php.ini
 ADD .docker/apache/apache.conf /etc/apache2/sites-available/000-default.conf
 
-RUN docker-php-ext-install pdo pdo_mysql mysqli 
+RUN docker-php-ext-install pdo pdo_mysql mysqli zip
 RUN a2enmod rewrite
 
 EXPOSE 80

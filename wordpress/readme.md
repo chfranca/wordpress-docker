@@ -1,0 +1,1 @@
+# If you are migrate server, include wordpress installation in this
